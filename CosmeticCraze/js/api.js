@@ -1,3 +1,11 @@
+var screenWidth = window.innerWidth;
+
+if (screenWidth < 1000) {
+    alert("Bukak dengan laptop bosku")
+    window.location.href = "https://d4ni5hhh.github.io/";
+}
+
+
 function removeAllPagination() {
     // Get the parent element with the ID "pagination"
     var paginationDiv = document.getElementById("pagination");
@@ -44,7 +52,7 @@ document.getElementById('search-btn').onclick = function () { updateContent(0) }
 function updateContent(page) {
     document.querySelector("div#loader").classList.add("loading");
     document.body.style.overflow = 'hidden';
-    
+
 
     product = document.getElementById('search').value
     type = document.getElementById('type').value
