@@ -2,8 +2,8 @@
 
 function clearTopProduct() {
   console.log('clear')
-  const table = document.getElementById('top-product').querySelector('table');
-  const tbody = table.querySelector('tbody');
+  var table = document.getElementById('top-product').querySelector('table');
+  var tbody = table.querySelector('tbody');
   while (tbody.childNodes[1]) {
     tbody.removeChild(tbody.childNodes[1]);
     console.log('del')
@@ -27,9 +27,9 @@ function hideEdit(num){
 
 async function addTopProduct(addData){
   
-  const data = await topProductData()
+  var data = await topProductData()
   data.push(addData)
-  const newData = data.join(',')
+  var newData = data.join(',')
   update(newData)
   reload()
   /*modalProductClose()
@@ -39,17 +39,17 @@ async function addTopProduct(addData){
 }
 
 async function editTopProduct(num){
-  const data = await topProductData()
+  var data = await topProductData()
   data[num] = document.querySelector('input[name="'+num+'"]').value
-  const newData = data.join(',')
+  var newData = data.join(',')
   update(newData)
   hideEdit(num)
 }
 
 async function deleteTopProduct(num){
-  const data = await topProductData()
+  var data = await topProductData()
   data.splice(num,1)
-  const newData = data.join(',')
+  var newData = data.join(',')
   update(newData)
   clearTopProduct()
   showTopProduct()
@@ -59,15 +59,15 @@ async function deleteTopProduct(num){
     let i = 0
       if (err) throw err;
       line = data.split('\n')
-      for(const data of line){
+      for(var data of line){
         
       }
   }) */
 
 
 var btn = document.getElementById('modal-btn');
-const modal = document.getElementById('modal');
-const main = document.querySelector('div.main');
+var modal = document.getElementById('modal');
+var main = document.querySelector('div.main');
 
 btn.addEventListener('click', modalToggle)
 //modal.addEventListener('click', modalClose)
@@ -82,7 +82,7 @@ function modalClose(){
 }
 
 
-const modalProduct = document.getElementById('modal-product');
+var modalProduct = document.getElementById('modal-product');
 function modalProductOpen(name,desc,image,link,price) {
   console.log(link)
   modalProduct.classList.add('show')
