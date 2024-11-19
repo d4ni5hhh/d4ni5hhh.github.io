@@ -43,6 +43,8 @@ function fetchDataFromAPI(apiUrl) {
 document.getElementById('search-btn').onclick = function () { updateContent(0) }
 function updateContent(page) {
     document.querySelector("div#loader").classList.add("loading");
+    document.body.style.overflow = 'hidden';
+    
 
     product = document.getElementById('search').value
     type = document.getElementById('type').value
@@ -212,6 +214,8 @@ function updateContent(page) {
         })
         .finally(() => {
             document.querySelector("div#loader").classList.remove("loading");
+            document.body.style.overflow = 'scroll';
+
         });
 }
 
