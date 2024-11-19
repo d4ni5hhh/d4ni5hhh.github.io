@@ -1,5 +1,3 @@
-
-
 function clearTopProduct() {
   console.log('clear')
   var table = document.getElementById('top-product').querySelector('table');
