@@ -1,81 +1,4 @@
-const { app, BrowserWindow } = require('electron');
-const fsp = require('fs').promises;
-const fs = require('fs');
-const path = require('path');
 
-function reload(){
-  const urlParams = new URLSearchParams(window.location.search);
-  console.log(urlParams.get('reload'))
-  if (urlParams.get('reload') != 'true') {
-    const currentURL = window.location.href;
-    var newURL = currentURL + '?reload=true';
-  }else{
-    var newURL = window.location.href;
-  }
-  window.location.href = newURL;
-}
-
-let fileTopProduct = path.join(__dirname,'topProduct.txt')
-
-async function topProductData() {
-  try {
-    const topProduct = await fsp.readFile(fileTopProduct, 'utf-8');
-    const topProductArray = topProduct.split(',');
-    return topProductArray
-  } catch (err) {
-    console.error(err);
-    return [];
-  }
-}
-
-async function showTopProduct(){
-  (async () => {
-    const result = await topProductData();
-    console.log('show')
-    let i = 0
-    for(const data of result){
-      i=i+1
-      let index = i-1
-      //Create Table Row
-      const tr = document.createElement('tr');
-      const td1 = document.createElement('td');
-      const td2 = document.createElement('td');
-      const td3 = document.createElement('td');
-      const input = document.createElement('input')
-      input.name = index
-      input.value = data
-      input.setAttribute('disabled','true')
-      input.addEventListener('keypress', function(event){
-        if(event.key == "Enter"){
-          event.preventDefault()
-          editTopProduct(index)
-        }
-      })
-      td1.textContent = i;
-      td2.appendChild(input)
-      const updateBtn = document.createElement('button')
-      const deleteBtn = document.createElement('button')
-      const divFlex = document.createElement('div')
-      divFlex.className = 'flex-center'
-      updateBtn.className = 'btn-update'
-      deleteBtn.className = 'btn-delete'
-      updateBtn.addEventListener('click', function() {
-        showEdit(index);
-      })
-      deleteBtn.addEventListener('click', function() {
-        deleteTopProduct(index);
-      });
-
-      divFlex.appendChild(updateBtn)
-      divFlex.appendChild(deleteBtn)
-      td3.appendChild(divFlex)
-      tr.appendChild(td1);
-      tr.appendChild(td2);
-      tr.appendChild(td3)
-      document.querySelector('table#top-product tbody').append(tr)
-    }
-  })();
-}
 
 function clearTopProduct() {
   console.log('clear')
@@ -132,17 +55,17 @@ async function deleteTopProduct(num){
   showTopProduct()
 }
 
-  fs.readFile(fileTopProduct, 'utf-8', (err, data) => {
+/*   fs.readFile(fileTopProduct, 'utf-8', (err, data) => {
     let i = 0
       if (err) throw err;
       line = data.split('\n')
       for(const data of line){
         
       }
-  })
+  }) */
 
 
-const btn = document.getElementById('modal-btn');
+var btn = document.getElementById('modal-btn');
 const modal = document.getElementById('modal');
 const main = document.querySelector('div.main');
 
