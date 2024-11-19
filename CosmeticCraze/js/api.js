@@ -55,7 +55,7 @@ function updateContent(page) {
 
 
     // API Link:
-    const API_URL = `http://makeup-api.herokuapp.com/api/v1/products.json?brand=${product}&product_type${type}&product_category=${categoryName}&product_tags=${tag}&price_greater_than=${minPrice}&price_less_than=${maxPrice}&rate_greater_than=${minRating}&rate_less_than=${maxRating}`;
+    const API_URL = `https://makeup-api.herokuapp.com/api/v1/products.json?brand=${product}&product_type${type}&product_category=${categoryName}&product_tags=${tag}&price_greater_than=${minPrice}&price_less_than=${maxPrice}&rate_greater_than=${minRating}&rate_less_than=${maxRating}`;
     console.log(API_URL)
     // Call the fetchDataFromAPI function
     fetchDataFromAPI(API_URL)
