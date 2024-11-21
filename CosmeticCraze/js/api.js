@@ -2,7 +2,6 @@ var screenWidth = window.innerWidth;
 
 if (screenWidth < 1000) {
     alert("Bukak dengan laptop bosku")
-    window.location.href = "https://d4ni5hhh.github.io/";
 }
 
 
