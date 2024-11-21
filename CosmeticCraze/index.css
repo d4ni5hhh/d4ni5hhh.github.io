@@ -38,6 +38,7 @@ div.main {
   height: 160%;
   background-color: white;
   width: 100%;
+  min-width: 1025px;
   border-radius: 1em;
   box-shadow: 5px 5px 10px #bebebe,
     -5px -5px 10px #829f8d;
