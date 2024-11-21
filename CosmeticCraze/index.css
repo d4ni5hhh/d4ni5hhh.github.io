@@ -564,8 +564,9 @@ div#modal-product div#product {
   background-color: white;
   border-radius: 1em;
   width: 540px;
-  height: 215px;
-  box-shadow: 1px 2px 10px #bebebe,
+  height: 235px;
+  box-shadow: 
+    1px 2px 10px #bebebe,
     -1px -2px 10px #e0e0e0;
 }
 
