@@ -4,11 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>khaf-services.my - Coming Soon</title>
+  <link rel="icon" type="image/x-icon" href="logo.png">
   <style>
     body {
       margin: 0;
       padding: 0;
-      background: linear-gradient(to right, #1f4037, #99f2c8);
+      background: linear-gradient(45deg, #1f4037, #99f2c8, #1f4037);
+      background-size: 200% 200%;
+      animation: gradientBG 10s ease infinite;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       display: flex;
       align-items: center;
@@ -18,17 +21,37 @@
       text-align: center;
     }
 
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
     .container {
       max-width: 500px;
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      transform: translateY(0);
+      transition: transform 0.3s ease;
+    }
+
+    .container:hover {
+      transform: translateY(-5px);
     }
 
     h1 {
       font-size: 3rem;
       margin-bottom: 0.5em;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
     }
 
     p {
       font-size: 1.2rem;
+      line-height: 1.6;
+      margin: 1rem 0;
     }
 
     .logo {
@@ -36,22 +59,31 @@
       font-weight: bold;
       margin-top: 2rem;
       color: #ffeaa7;
+      text-transform: uppercase;
+      letter-spacing: 2px;
     }
 
     img {
       width: 150px;
       height: auto;
       margin: 1.5em 0;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
     }
 
-    /* Simple SVG animation */
+    img:hover {
+      transform: scale(1.05);
+    }
+
     .circle {
       fill: none;
       stroke: #ffeaa7;
       stroke-width: 4;
       stroke-dasharray: 283;
       stroke-dashoffset: 283;
-      animation: draw 2s infinite ease-in-out;
+      animation: draw 3s infinite ease-in-out;
+      filter: drop-shadow(0 0 5px rgba(255, 234, 167, 0.5));
     }
 
     @keyframes draw {
@@ -65,20 +97,23 @@
         stroke-dashoffset: 283;
       }
     }
+
+    strong {
+      color: #ffeaa7;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <h1>We're Building Something Great</h1>
     <p>Our website <strong>khaf-services.my</strong> is currently under construction.</p>
-    <p>Stay tuned, we’ll be launching soon!</p>
+    <p>Stay tuned, we'll be launching soon!</p>
 
-    <!-- SVG animation -->
-    <svg width="100" height="100" viewBox="0 0 100 100">
-      <circle cx="50" cy="50" r="45" class="circle"></circle>
-    </svg>
-
+      <div class="svg-container">
+        <img src="logo.png" alt="KHAF Services Logo">
+      </div>
     <div class="logo">KHAF Services</div>
   </div>
 </body>
-</html>
+</html>                    a
