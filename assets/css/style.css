@@ -63,7 +63,7 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
 .container {
     max-width: var(--container);
     margin: 0 auto;
-    padding: 0 24px;
+    padding: 24px;
     position: relative;
     z-index: 1;
 }
@@ -164,6 +164,11 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
     gap: 60px;
     align-items: center;
 }
+
+.hero-text{
+    padding: 10px;
+}
+
 .hero-eyebrow {
     display: inline-flex;
     align-items: center;
