@@ -28,7 +28,7 @@
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
 body {
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     background: var(--bg);
@@ -36,6 +36,8 @@ body {
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
+    width: 100%;
+    max-width: 100%;
 }
 body::before {
     content: '';
@@ -626,6 +628,9 @@ form.contact-form {
     .grid-3, .projects { grid-template-columns: repeat(2, 1fr); }
     .skills-wrap, .contact-wrap, .about-grid, .footer-grid { grid-template-columns: 1fr; }
     .timeline-item { grid-template-columns: 1fr; gap: 6px; }
+}
+@media (max-width: 960px) {
+    .hero-card.badge { right: 0; }
 }
 @media (max-width: 640px) {
     .nav-toggle { display: flex; }
