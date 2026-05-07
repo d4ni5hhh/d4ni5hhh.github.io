@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Building modern web experiences and reliable IT solutions" />
+    <title>Contact — Danish</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+    <header class="site-header">
+        <nav class="nav container">
+            <a class="brand" href="index.html">
+                <span class="brand-mark">&lt;/&gt;</span>
+                <span class="brand-name">Danish</span>
+            </a>
+            <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><button class="theme-toggle" aria-label="Toggle theme">&#9789;</button></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="main">
+
+<section class="container">
+    <div class="section-head reveal" style="margin-top:30px">
+        <span class="eyebrow">// contact</span>
+        <h2>Let's work together</h2>
+        <p>Have a project, a tech problem, or just want to say hello? Drop me a message and I'll get back to you within a day.</p>
+    </div>
+
+    <div class="contact-wrap">
+        <div class="contact-info reveal">
+            <div class="info-item">
+                <div class="icon">@</div>
+                <div>
+                    <h4>Email</h4>
+                    <p><a href="mailto:danishhh324@gmail.com">danishhh324@gmail.com</a></p>
+                </div>
+            </div>
+            <div class="info-item">
+                <div class="icon">PIN</div>
+                <div>
+                    <h4>Location</h4>
+                    <p>Available Worldwide (Remote)</p>
+                </div>
+            </div>
+            <div class="info-item">
+                <div class="icon">CLK</div>
+                <div>
+                    <h4>Working Hours</h4>
+                    <p>Mon — Sat &middot; 9:00 AM — 8:00 PM</p>
+                </div>
+            </div>
+            <div class="info-item">
+                <div class="icon">!</div>
+                <div>
+                    <h4>Response Time</h4>
+                    <p>Usually under 2 hours</p>
+                </div>
+            </div>
+        </div>
+
+        <form id="contactForm" class="contact-form reveal" novalidate>
+            <div id="formAlert"></div>
+
+            <div class="row-2">
+                <div class="field">
+                    <label for="name">Your name</label>
+                    <input type="text" id="name" name="name" placeholder="Jane Doe" required>
+                </div>
+                <div class="field">
+                    <label for="email">Email address</label>
+                    <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                </div>
+            </div>
+
+            <div class="row-2">
+                <div class="field">
+                    <label for="service">I need help with</label>
+                    <select id="service" name="service">
+                        <option value="">Select a service</option>
+                        <option value="web-development">Web Development</option>
+                        <option value="ui-ux">UI / UX Design</option>
+                        <option value="it-support">IT Support</option>
+                        <option value="networking">Networking</option>
+                        <option value="hosting">Hosting / Deployment</option>
+                        <option value="other">Something else</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" placeholder="Project inquiry">
+                </div>
+            </div>
+
+            <div class="field">
+                <label for="message">Your message</label>
+                <textarea id="message" name="message" placeholder="Tell me a bit about your project or issue..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="align-self:flex-start">Send Message &rarr;</button>
+        </form>
+    </div>
+</section>
+
+    </main>
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div>
+                <h3 class="footer-brand">Danish</h3>
+                <p class="muted">Building modern web experiences and reliable IT solutions</p>
+            </div>
+            <div>
+                <h4>Quick Links</h4>
+                <ul class="footer-list">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Get in touch</h4>
+                <ul class="footer-list">
+                    <li><a href="mailto:danishhh324@gmail.com">danishhh324@gmail.com</a></li>
+                    <li class="muted">Available Worldwide (Remote)</li>
+                </ul>
+                <div class="socials">
+                    <a href="#" aria-label="GitHub">GH</a>
+                    <a href="#" aria-label="LinkedIn">IN</a>
+                    <a href="#" aria-label="Twitter">TW</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom container">
+            <p>&copy; 2026 Danish. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="assets/js/main.js"></script>
+    <script>
+    (function () {
+        const form = document.getElementById('contactForm');
+        const alertBox = document.getElementById('formAlert');
+        if (!form) return;
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const name = form.name.value.trim();
+            const email = form.email.value.trim();
+            const subject = form.subject.value.trim();
+            const service = form.service.value;
+            const message = form.message.value.trim();
+            const errors = [];
+
+            if (name.length < 2) errors.push('Please enter your name.');
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) errors.push('Please enter a valid email address.');
+            if (message.length < 10) errors.push('Message should be at least 10 characters.');
+
+            alertBox.innerHTML = '';
+            if (errors.length) {
+                alertBox.innerHTML = '<div class="alert alert-error">' +
+                    errors.map(e => '&bull; ' + e).join('<br>') + '</div>';
+                return;
+            }
+
+            const body = encodeURIComponent(
+                'Name: ' + name + '\n' +
+                'Email: ' + email + '\n' +
+                'Service: ' + (service || 'unspecified') + '\n\n' +
+                message
+            );
+            const subj = encodeURIComponent(subject || 'Portfolio inquiry');
+            window.location.href = 'mailto:danishhh324@gmail.com?subject=' + subj + '&body=' + body;
+
+            alertBox.innerHTML = '<div class="alert alert-success">Opening your email client&hellip; If nothing happens, email me directly at <a href="mailto:danishhh324@gmail.com">danishhh324@gmail.com</a>.</div>';
+            form.reset();
+        });
+    })();
+    </script>
+</body>
+</html>

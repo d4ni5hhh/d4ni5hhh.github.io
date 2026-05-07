@@ -1,160 +1,203 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>khaf-services.my - Coming Soon</title>
-  <link rel="icon" type="image/x-icon" href="logo.png">
-  <style>
-    body {
-      margin: 0;
-      padding: 10px;
-      background: linear-gradient(45deg, #1f4037, #99f2c8, #1f4037);
-      background-size: 200% 200%;
-      animation: gradientBG 10s ease infinite;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      color: white;
-      text-align: center;
-      box-sizing: border-box;
-    }
-
-    @keyframes gradientBG {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    .container {
-      width: 90%;
-      max-width: 500px;
-      padding: 1.5rem;
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      border-radius: 20px;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-      transform: translateY(0);
-      transition: transform 0.3s ease;
-    }
-
-    .container:hover {
-      transform: translateY(-5px);
-    }
-
-    h1 {
-      font-size: 2rem;
-      margin-bottom: 0.5em;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-    }
-
-    @media (min-width: 768px) {
-      h1 {
-        font-size: 3rem;
-      }
-    }
-
-    p {
-      font-size: 1rem;
-      line-height: 1.6;
-      margin: 1rem 0;
-    }
-
-    @media (min-width: 768px) {
-      p {
-        font-size: 1.2rem;
-      }
-    }
-
-    .logo {
-      font-size: 1.2rem;
-      font-weight: bold;
-      margin-top: 1.5rem;
-      color: #ffeaa7;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-    }
-
-    @media (min-width: 768px) {
-      .logo {
-        font-size: 1.5rem;
-      }
-    }
-
-    img {
-      width: 120px;
-      height: auto;
-      margin: 1em 0;
-      border-radius: 15px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease;
-    }
-
-    @media (min-width: 768px) {
-      img {
-        width: 150px;
-      }
-    }
-
-    img:hover {
-      transform: scale(1.05);
-    }
-
-    .circle {
-      fill: none;
-      stroke: #ffeaa7;
-      stroke-width: 4;
-      stroke-dasharray: 283;
-      stroke-dashoffset: 283;
-      animation: draw 3s infinite ease-in-out;
-      filter: drop-shadow(0 0 5px rgba(255, 234, 167, 0.5));
-    }
-
-    @keyframes draw {
-      0% {
-        stroke-dashoffset: 283;
-      }
-      50% {
-        stroke-dashoffset: 0;
-      }
-      100% {
-        stroke-dashoffset: 283;
-      }
-    }
-
-    strong {
-      color: #ffeaa7;
-      font-weight: bold;
-    }
-
-    @media (max-width: 320px) {
-      h1 {
-        font-size: 1.5rem;
-      }
-      p {
-        font-size: 0.9rem;
-      }
-      .logo {
-        font-size: 1rem;
-      }
-      img {
-        width: 100px;
-      }
-    }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Building modern web experiences and reliable IT solutions" />
+    <title>Home — Danish | Web Developer &amp; IT Support</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
-  <div class="container">
-    <h1>We're Building Something Great</h1>
-    <p>Our website <strong>khaf-services.my</strong> is currently under construction.</p>
-    <p>Stay tuned, we'll be launching soon!</p>
+    <header class="site-header">
+        <nav class="nav container">
+            <a class="brand" href="index.html">
+                <span class="brand-mark">&lt;/&gt;</span>
+                <span class="brand-name">Danish</span>
+            </a>
+            <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><button class="theme-toggle" aria-label="Toggle theme">&#9789;</button></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="main">
 
-      <div class="svg-container">
-        <img src="logo.png" alt="KHAF Services Logo">
-      </div>
-    <div class="logo">KHAF Services</div>
-  </div>
+<section class="hero container">
+    <div class="hero-text reveal">
+        <span class="hero-eyebrow"><span class="pulse"></span> Available for new projects</span>
+        <h1>Hi, I'm <span class="grad">Danish</span> — I build modern websites &amp; keep your IT running.</h1>
+        <p class="lede">Web developer and IT support specialist crafting fast, accessible web experiences and providing reliable technical support for businesses and individuals.</p>
+        <div class="hero-actions">
+            <a href="contact.html" class="btn btn-primary">Hire Me &rarr;</a>
+            <a href="portfolio.html" class="btn btn-ghost">View Work</a>
+        </div>
+        <div class="hero-stats">
+            <div class="stat"><strong>50+</strong><span>Projects delivered</span></div>
+            <div class="stat"><strong>3+</strong><span>Years experience</span></div>
+            <div class="stat"><strong>24/7</strong><span>IT support</span></div>
+        </div>
+    </div>
+    <div class="hero-visual reveal">
+        <div class="hero-orb"></div>
+        <div class="hero-card code">
+            <div class="line"><span class="k">const</span> <span class="f">developer</span> = {</div>
+            <div class="line">  name: <span class="s">'Danish'</span>,</div>
+            <div class="line">  role: <span class="s">'Web Dev + IT'</span>,</div>
+            <div class="line">  stack: [<span class="s">'PHP'</span>, <span class="s">'JS'</span>, <span class="s">'CSS'</span>],</div>
+            <div class="line">  available: <span class="k">true</span></div>
+            <div class="line">};</div>
+        </div>
+        <div class="hero-card badge">
+            <div class="dot">!</div>
+            <div>
+                <strong style="font-size:.95rem">Fast Response</strong>
+                <div style="color:var(--muted);font-size:.8rem">Avg. reply &lt; 2h</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="section-head reveal">
+            <span class="eyebrow">// what i do</span>
+            <h2>Services tailored for your business</h2>
+            <p>From building your online presence to keeping your systems healthy — everything you need under one roof.</p>
+        </div>
+        <div class="grid-3">
+            <article class="card reveal">
+                <div class="icon">&lt;/&gt;</div>
+                <h3>Web Development</h3>
+                <p>Modern, responsive websites built with clean code and best practices.</p>
+                <ul>
+                    <li>Custom HTML, CSS &amp; JavaScript</li>
+                    <li>Responsive design for all devices</li>
+                    <li>SEO-friendly markup</li>
+                </ul>
+            </article>
+            <article class="card reveal">
+                <div class="icon">UI</div>
+                <h3>UI / UX Design</h3>
+                <p>Interfaces that look great and feel right — designed with users in mind.</p>
+                <ul>
+                    <li>Wireframes &amp; prototypes</li>
+                    <li>Mobile-first design</li>
+                    <li>Accessibility-focused</li>
+                </ul>
+            </article>
+            <article class="card reveal">
+                <div class="icon">IT</div>
+                <h3>IT Support</h3>
+                <p>Reliable tech support to keep your business running without interruptions.</p>
+                <ul>
+                    <li>System setup &amp; maintenance</li>
+                    <li>Network troubleshooting</li>
+                    <li>Hardware &amp; software help</li>
+                </ul>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="section-head reveal">
+            <span class="eyebrow">// skills</span>
+            <h2>Tools &amp; technologies I work with</h2>
+            <p>A balanced toolkit for shipping web projects and resolving IT challenges.</p>
+        </div>
+        <div class="skills-wrap">
+            <div class="skills-list">
+                <div class="skill reveal">
+                    <div class="skill-head"><span>HTML / CSS</span><span>95%</span></div>
+                    <div class="bar"><i data-value="95"></i></div>
+                </div>
+                <div class="skill reveal">
+                    <div class="skill-head"><span>JavaScript</span><span>85%</span></div>
+                    <div class="bar"><i data-value="85"></i></div>
+                </div>
+                <div class="skill reveal">
+                    <div class="skill-head"><span>Responsive Design</span><span>92%</span></div>
+                    <div class="bar"><i data-value="92"></i></div>
+                </div>
+                <div class="skill reveal">
+                    <div class="skill-head"><span>IT Support &amp; Networking</span><span>90%</span></div>
+                    <div class="bar"><i data-value="90"></i></div>
+                </div>
+                <div class="skill reveal">
+                    <div class="skill-head"><span>Linux / Server admin</span><span>80%</span></div>
+                    <div class="bar"><i data-value="80"></i></div>
+                </div>
+            </div>
+            <div class="reveal">
+                <div class="tech-cloud">
+                    <span class="chip">HTML5</span>
+                    <span class="chip">CSS3</span>
+                    <span class="chip">JavaScript</span>
+                    <span class="chip">Tailwind</span>
+                    <span class="chip">Bootstrap</span>
+                    <span class="chip">Sass</span>
+                    <span class="chip">Git / GitHub</span>
+                    <span class="chip">Linux</span>
+                    <span class="chip">Apache / Nginx</span>
+                    <span class="chip">Networking</span>
+                    <span class="chip">Windows Admin</span>
+                    <span class="chip">Hardware</span>
+                </div>
+                <div class="cta-banner" style="margin-top:30px">
+                    <h3>Need help with a project?</h3>
+                    <p>Whether it's a new site or an IT problem, let's talk.</p>
+                    <a href="contact.html" class="btn btn-ghost">Start a Conversation &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    </main>
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div>
+                <h3 class="footer-brand">Danish</h3>
+                <p class="muted">Building modern web experiences and reliable IT solutions</p>
+            </div>
+            <div>
+                <h4>Quick Links</h4>
+                <ul class="footer-list">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Get in touch</h4>
+                <ul class="footer-list">
+                    <li><a href="mailto:danishhh324@gmail.com">danishhh324@gmail.com</a></li>
+                    <li class="muted">Available Worldwide (Remote)</li>
+                </ul>
+                <div class="socials">
+                    <a href="#" aria-label="GitHub">GH</a>
+                    <a href="#" aria-label="LinkedIn">IN</a>
+                    <a href="#" aria-label="Twitter">TW</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom container">
+            <p>&copy; 2026 Danish. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="assets/js/main.js"></script>
 </body>
 </html>
