@@ -32,11 +32,15 @@
   /* Every section is exactly one screen and the page always comes to rest on a whole section. */
   html { scroll-behavior: smooth; scroll-snap-type: y mandatory; }
   body:not(.opened) { overflow: hidden; }
+  /* No visible scrollbar anywhere (page, cards, sheets, fields); everything still scrolls by touch, wheel and keys. */
+  html, body, * { scrollbar-width: none; -ms-overflow-style: none; }
+  html::-webkit-scrollbar, body::-webkit-scrollbar, *::-webkit-scrollbar { display: none; width: 0; height: 0; }
   body { margin: 0; background: var(--paper); color: var(--ink); font: 400 19px/1.55 var(--font-serif); -webkit-font-smoothing: antialiased; }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
   p, h1, h2, h3 { margin: 0; }
   h1, h2 { text-wrap: balance; }
   button, input, select, textarea { font: inherit; color: inherit; }
+  .card, .sheet, .dock { box-sizing: border-box; }  /* widths below are the outer size: the scene shows around them */
 
   /* ---------- 3D layer + poster fallback */
   #poster { position: fixed; inset: 0; background: var(--paper) url("assets/poster.jpg") center 32% / cover no-repeat; transition: opacity 1.2s ease; }
@@ -65,7 +69,7 @@
   .seal-ring { position: absolute; inset: -16px; border-radius: 50%; border: 1px solid rgba(180, 138, 70, .6); animation: seal-pulse 2.6s ease-in-out infinite; }
   @keyframes seal-pulse { 0%, 100% { transform: scale(.94); opacity: .25; } 50% { transform: scale(1.05); opacity: .85; } }
   #seal:focus-visible { outline: 2px solid var(--sage); outline-offset: 10px; }
-  .cover-hint { position: absolute; left: 0; right: 0; top: calc(50% + 132px); text-align: center; font: 600 12px/1 var(--font-caps); letter-spacing: .3em; text-transform: uppercase; color: var(--sage); transition: opacity .5s; }
+  .cover-hint { position: absolute; left: 0; right: 0; top: calc(50% + 132px); width: calc(min(57vw, 28.5svh) - 14px); margin-inline: auto; text-wrap: balance; text-align: center; font: 600 12px/1.75 var(--font-caps); letter-spacing: .3em; text-transform: uppercase; color: var(--sage); transition: opacity .5s; }
   body.opened #seal { transform: scale(.55); opacity: 0; pointer-events: none; }
   body.opened .cover-kicker, body.opened .cover-date, body.opened .cover-hint { opacity: 0; }
   @media (prefers-reduced-motion: reduce) {
@@ -85,24 +89,19 @@
   .hero-names { margin-top: 10px; display: grid; justify-items: center; font: 500 clamp(44px, 14vw, 66px)/1 var(--font-serif); letter-spacing: .08em; text-transform: uppercase; color: var(--ink); }
   .hero-names .amp { font: 400 .62em/1.15 var(--font-script); letter-spacing: 0; text-transform: none; color: var(--rose); }
   .hero-date { margin-top: 16px; font: 600 13px/1 var(--font-caps); letter-spacing: .3em; text-transform: uppercase; color: var(--sage); }
-  .scroll-hint { position: absolute; left: 50%; bottom: calc(var(--dock-h) + 24px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); display: flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; background: rgba(252, 248, 241, .9); font: 600 11px/1 var(--font-caps); letter-spacing: .28em; text-transform: uppercase; color: var(--ink); white-space: nowrap; }
+  .scroll-hint { position: absolute; left: 50%; bottom: calc(var(--dock-h) + 30px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); display: flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; background: rgba(252, 248, 241, .9); font: 600 11px/1 var(--font-caps); letter-spacing: .28em; text-transform: uppercase; color: var(--ink); white-space: nowrap; }
   .scroll-hint svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; animation: nudge 1.8s ease-in-out infinite; }
   .hint-auto { display: none; }
   .hint-auto small { display: block; margin-top: 5px; font-size: 10px; letter-spacing: .14em; color: var(--muted); }
   body.touring .hint-auto { display: block; text-align: center; }
   body.touring .hint-swipe { display: none; }
-  @media (max-height: 740px) {
-    .card { gap: 7px; padding-top: 70px; }
-    .arabic { font-size: 26px; }
-    .prayer { font-size: 16.5px; }
-    .hero-names { font-size: clamp(40px, 12vw, 56px); }
-  }
   @keyframes nudge { 50% { transform: translateY(3px); } }
   @media (prefers-reduced-motion: reduce) { .scroll-hint svg { animation: none; } }
 
-  .card { position: relative; width: min(100%, 420px); max-height: 100%; overflow-y: auto; scrollbar-width: thin; display: grid; gap: 10px; justify-items: center; padding: 86px 26px 36px; text-align: center; background: var(--card); -webkit-backdrop-filter: blur(10px) saturate(1.05); backdrop-filter: blur(10px) saturate(1.05); border: 1px solid var(--line); border-radius: 220px 220px 22px 22px / 200px 200px 22px 22px; box-shadow: 0 26px 60px rgba(66, 48, 28, .2); }
-  .card::before { content: ""; position: absolute; inset: 8px; border: 1px solid rgba(180, 138, 70, .3); border-radius: inherit; pointer-events: none; }
+  .card { position: relative; width: min(calc(100% - 48px), 400px); max-height: 100%; overflow-y: auto; display: grid; gap: 10px; justify-items: center; padding: 82px 22px 32px; outline: 1px solid rgba(180, 138, 70, .32); outline-offset: -9px; text-align: center; background: var(--card); -webkit-backdrop-filter: blur(10px) saturate(1.05); backdrop-filter: blur(10px) saturate(1.05); border: 1px solid var(--line); border-radius: 220px 220px 22px 22px / 200px 200px 22px 22px; box-shadow: 0 26px 60px rgba(66, 48, 28, .2); }
   .card > * { position: relative; }
+  /* Scrollbars are hidden, so a card that is taller than a short phone fades at the bottom while there is more to read. */
+  .card.more { -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 46px), transparent); mask-image: linear-gradient(to bottom, #000 calc(100% - 46px), transparent); }
   .label { margin-top: 8px; font: 600 12.5px/1.3 var(--font-caps); letter-spacing: .28em; text-transform: uppercase; color: var(--sage); }
   .card > .label:first-child { margin-top: 0; }
   .arabic { font: 400 30px/1.6 var(--font-arabic); color: var(--rose); }
@@ -150,7 +149,7 @@
   .credit { margin-top: 10px; font: 500 11px/1.6 var(--font-caps); letter-spacing: .06em; color: var(--muted); max-width: 36ch; }
 
   /* ---------- dock + sheets */
-  .dock { position: fixed; left: 0; right: 0; bottom: 0; z-index: 45; display: flex; justify-content: center; gap: 2px; padding: 8px 10px calc(8px + env(safe-area-inset-bottom, 0px)); background: rgba(250, 246, 238, .92); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border-top: 1px solid var(--line); }
+  .dock { position: fixed; left: 50%; bottom: calc(10px + env(safe-area-inset-bottom, 0px)); z-index: 45; width: min(calc(100% - 48px), 440px); transform: translateX(-50%); display: flex; justify-content: space-around; gap: 2px; padding: 7px 8px; background: rgba(250, 246, 238, .92); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border: 1px solid var(--line); border-radius: 22px; box-shadow: 0 12px 34px rgba(66, 48, 28, .2); }
   .dock button { flex: 0 1 80px; min-width: 0; display: grid; justify-items: center; gap: 5px; padding: 6px 2px; border: 0; border-radius: 12px; background: none; color: var(--sage); font: 600 10.5px/1 var(--font-caps); letter-spacing: .12em; text-transform: uppercase; cursor: pointer; }
   .dock svg { width: 24px; height: 24px; stroke: currentColor; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
   .dock button[aria-expanded="true"], .dock button[aria-pressed="true"] { background: rgba(79, 99, 73, .12); color: var(--ink); }
@@ -158,7 +157,7 @@
   #dock-auto[aria-pressed="true"] .auto-on { display: inline; }
   #dock-auto[aria-pressed="true"] .auto-idle { display: none; }
   .backdrop { position: fixed; inset: 0; z-index: 35; background: rgba(47, 41, 36, .3); }
-  .sheet { position: fixed; left: 50%; bottom: calc(var(--dock-h) + 10px + env(safe-area-inset-bottom, 0px)); z-index: 40; width: min(calc(100% - 24px), 440px); max-height: min(70svh, 640px); overflow: auto; transform: translateX(-50%); display: grid; gap: 12px; justify-items: center; padding: 24px 22px 24px; text-align: center; background: rgba(252, 248, 241, .98); border: 1px solid var(--line); border-radius: 26px; box-shadow: 0 -12px 50px rgba(66, 48, 28, .25); animation: rise .3s ease-out; }
+  .sheet { position: fixed; left: 50%; bottom: calc(var(--dock-h) + 22px + env(safe-area-inset-bottom, 0px)); z-index: 40; width: min(calc(100% - 48px), 440px); max-height: min(70svh, 640px); overflow: auto; transform: translateX(-50%); display: grid; gap: 12px; justify-items: center; padding: 24px 22px 24px; text-align: center; background: rgba(252, 248, 241, .98); border: 1px solid var(--line); border-radius: 26px; box-shadow: 0 -12px 50px rgba(66, 48, 28, .25); animation: rise .3s ease-out; }
   @keyframes rise { from { transform: translate(-50%, 22px); opacity: 0; } }
   @media (prefers-reduced-motion: reduce) { .sheet { animation: none; } }
   .sheet h2 { font: 600 13px/1.2 var(--font-caps); letter-spacing: .3em; text-transform: uppercase; color: var(--sage); }
@@ -184,6 +183,37 @@
   form.rsvp .pair > div { display: grid; gap: 6px; min-width: 0; }
   form.rsvp small { justify-self: end; font: 500 11px/1 var(--font-caps); color: var(--muted); }
   form.rsvp .btn { justify-self: center; margin-top: 6px; }
+  /* Phone sizes last, so they override the base rules above. */
+  @media (max-width: 480px) {
+    .card { gap: 6px; padding: 66px 20px 24px; }
+    .label { font-size: 11.5px; }
+    .lead { font-size: 17px; }
+    .invite { font-size: 16.5px; line-height: 1.45; }
+    .host { margin-top: 2px; }
+    .host-name { font-size: 12.5px; }
+    .host-role, .group-role { font-size: 15px; }
+    .together { font-size: 30px; }
+    .arabic { font-size: 25px; line-height: 1.5; }
+    .value { font-size: 18px; }
+    .venue-line { font-size: 17px; }
+    .prayer { font-size: 15.5px; line-height: 1.48; }
+    .station.low .fullname { font-size: clamp(28px, 8.6vw, 38px); }
+    .fullname .given, .fullname .patronym { white-space: nowrap; }
+  }
+  @media (max-width: 400px) {
+    .cover-hint { font-size: 11px; letter-spacing: .2em; }  /* fits inside the cover arch opening */
+  }
+  @media (max-height: 760px) {
+    .station { padding-top: 36px; }
+    .card { gap: 5px; padding-top: 60px; padding-bottom: 24px; }
+    .arabic { font-size: 23px; }
+    .lead, .invite { font-size: 15.5px; }
+    .host-role, .group-role { font-size: 14px; }
+    .together { font-size: 26px; }
+    .prayer { font-size: 14.5px; line-height: 1.45; }
+    .actions { margin-top: 8px; }
+    .hero-names { font-size: clamp(40px, 12vw, 56px); }
+  }
 </style>
 
 <div id="invite-data" data-json="{&quot;brideShort&quot;:&quot;Habibah&quot;,&quot;groomShort&quot;:&quot;Danish&quot;,&quot;dateLine&quot;:&quot;Sabtu, 6 Februari 2027&quot;,&quot;eventStart&quot;:&quot;2027-02-06T12:00:00+08:00&quot;,&quot;eventEnd&quot;:&quot;2027-02-06T16:00:00+08:00&quot;,&quot;venue&quot;:&quot;292-U, Kg Hulu Lerek, Bukit Diman, 21800 Ajil, Terengganu&quot;,&quot;geo&quot;:&quot;5.0343907,103.1124585&quot;,&quot;mapsUrl&quot;:&quot;https://www.google.com/maps?q=5.0343907,103.1124585&quot;,&quot;wazeUrl&quot;:&quot;https://waze.com/ul?ll=5.0343907,103.1124585&amp;navigate=yes&quot;,&quot;contacts&quot;:[],&quot;gifts&quot;:[],&quot;programme&quot;:[],&quot;dressCode&quot;:&quot;&quot;,&quot;rsvpWhatsapp&quot;:&quot;&quot;,&quot;rsvpNote&quot;:&quot;&quot;}" hidden></div>
@@ -458,6 +488,13 @@
     $("#dock-hadiah").hidden = false;
   }
 
+  // ---- tall cards on short phones: mark "more below" while the card is not scrolled to its end
+  const markMore = (c) => c.classList.toggle("more", c.scrollHeight - c.clientHeight - c.scrollTop > 2);
+  const markAll = () => $$(".station .card").forEach(markMore);
+  for (const c of $$(".station .card")) c.addEventListener("scroll", () => markMore(c), { passive: true });
+  markAll(); addEventListener("resize", markAll);
+  if (document.fonts) document.fonts.ready.then(markAll);
+
   // ---- countdown
   const target = DATA.eventStart ? new Date(DATA.eventStart).getTime() : NaN;
   function tick() {
@@ -540,13 +577,13 @@
   const stations = $$(".station");
   const autoBtn = $("#dock-auto");
   const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  let touring = false, tourTimer = 0, tookControl = false, tourIdx = 0;
+  let touring = false, tourTimer = 0, cardTimer = 0, tookControl = false, tourIdx = 0;
   const wordsIn = (el) => (el.innerText || "").split(/\s+/).filter(Boolean).length;
   const dwell = (el) => (el.dataset.station === "hero" ? 3500 : Math.min(15000, 3600 + wordsIn(el) * 110));
   const stationIndex = () => { let best = 0, bd = Infinity; stations.forEach((s, i) => { const d = Math.abs(s.getBoundingClientRect().top); if (d < bd) { bd = d; best = i; } }); return best; };
   const goTo = (i) => stations[i].scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "start" });
   function setTouring(on) {
-    touring = on; clearTimeout(tourTimer);
+    touring = on; clearTimeout(tourTimer); clearTimeout(cardTimer);
     autoBtn.setAttribute("aria-pressed", String(on));
     document.body.classList.toggle("touring", on);
   }
@@ -556,7 +593,13 @@
     clearTimeout(tourTimer);
     if (!touring || document.hidden) return;
     if (tourIdx >= stations.length - 1) { setTouring(false); return; }
-    tourTimer = setTimeout(() => { if (!touring) return; tourIdx += 1; goTo(tourIdx); tourTimer = setTimeout(step, 1600); }, dwell(stations[tourIdx]));
+    const here = stations[tourIdx], wait = dwell(here), card = here.querySelector(".card");
+    clearTimeout(cardTimer);
+    if (card && card.scrollHeight > card.clientHeight + 2) {  // short phones: show the rest of a tall card during its pause
+      card.scrollTop = 0;
+      cardTimer = setTimeout(() => { if (touring) card.scrollTo({ top: card.scrollHeight, behavior: reducedMotion ? "auto" : "smooth" }); }, wait * 0.45);
+    }
+    tourTimer = setTimeout(() => { if (!touring) return; tourIdx += 1; goTo(tourIdx); tourTimer = setTimeout(step, 1600); }, wait);
   }
   function stopTour() { tookControl = true; if (touring) setTouring(false); }
   function playTour() {
